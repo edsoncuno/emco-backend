@@ -4,3 +4,6 @@ git config --global init.defaultBranch master
 
 
 npm i -g npm
+
+inicializar el archivo de configuracion de typescript
+npm run tsc -- --init
