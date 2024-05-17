@@ -3,13 +3,15 @@ import StakeholderModel from '../../models/stakeholder.model';
 
 export const validationNoExisById = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        // findById retorna el objeto 
         await StakeholderModel.findById(req.params.id)
-        // si lo anteior no falla, significa que si existe
         next();
     } catch (error) {
+        // esto sucede en caso de que la cantidad de caracteres de id
+        // no sea la indicada, 24
         console.error(error);
-        res.status(400);
-        res.json({ name: "Error", message: "No existe el id" });
+        res.status(500);
+        res.json({
+            name: "Error", message: "Error del servidor"
+        });
     }
 };
