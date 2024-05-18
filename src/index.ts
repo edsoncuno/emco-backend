@@ -1,7 +1,7 @@
 import express from "express"
 import router from "./routes"
 import { connect } from "mongoose";
-import { handleError } from "./routes/middlewares/handleError.middleware"
+import { handleError } from "./middleware/handleError.middleware"
 
 const app = express();
 

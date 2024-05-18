@@ -1,6 +1,6 @@
 import { Router } from "express"
-import ItemRouter from "./item.router" 
-import StakeholderRouter from "./stakeholder.router"
+import ItemRouter from "./item.router"
+import StakeholderRouter from "./stakeholder"
 
 const router = Router()
 

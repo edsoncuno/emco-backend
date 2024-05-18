@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import StakeholderModel from '../../models/stakeholder.model';
+import StakeholderModel from '../../../models/stakeholder.model';
 
 export const validationNoExisById = async (req: Request, res: Response, next: NextFunction) => {
     try {

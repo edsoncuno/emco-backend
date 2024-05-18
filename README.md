@@ -7,3 +7,6 @@ npm i -g npm
 
 inicializar el archivo de configuracion de typescript
 npm run tsc -- --init
+
+generar el archivo condifguracion de jest basico:
+npx ts-jest config:init

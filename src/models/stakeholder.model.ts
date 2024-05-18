@@ -1,5 +1,10 @@
 import { Schema, model } from 'mongoose';
-import { Stakeholder } from "../interfaces/stakeholder.interface"
+
+export interface Stakeholder {
+    nombre?: string;
+    lugar?: string;
+    tipo?: string;
+}
 
 const stakeholderSchema = new Schema<Stakeholder>({
     nombre: String,
