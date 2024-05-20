@@ -1,17 +1,25 @@
 import { Request, Response, NextFunction } from 'express';
 import StakeholderModel from '../../../models/stakeholder.model';
 
-export const validationNoExisById = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-        await StakeholderModel.findById(req.params.id)
-        next();
-    } catch (error) {
-        // esto sucede en caso de que la cantidad de caracteres de id
-        // no sea la indicada, 24
-        console.error(error);
-        res.status(500);
-        res.json({
-            name: "Error", message: "Error del servidor"
-        });
+export async function validationNoExisById(req: Request, res: Response, next: NextFunction) {
+    /**
+     * para que el id sea valido debe cumplir:
+     * tener 24 caracteres
+     */
+    if (req.params.id.length != 24) {
+        res.status(400)
+        res.json({ message: "El id no es válido" });
+    } else {
+        /**
+         * si existe, retorna el objeto
+         * sino, retorna null
+        */
+        let query = await StakeholderModel.findById(req.params.id)
+        if (!query) {
+            res.status(400)
+            res.json({ message: "El id no existe" })
+        } else {
+            next();
+        }
     }
 };

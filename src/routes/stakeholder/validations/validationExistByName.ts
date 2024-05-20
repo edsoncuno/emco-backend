@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import StakeholderModel from '../../../models/stakeholder.model';
 
-export const validationExistByName = async (req: Request, res: Response, next: NextFunction) => {
+export async function validationExistByName(req: Request, res: Response, next: NextFunction) {
     /**
      * Si existe retorna el objeto
      * sino, retorna null

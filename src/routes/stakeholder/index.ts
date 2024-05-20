@@ -1,14 +1,18 @@
 import { Router } from "express"
-import RouterGetStakeholder from "./stakeholderget"
+import { getStakeholderById, getStakeholderAll } from "./stakeholder.get"
 import { postStakeholder } from "./stakeholder.post"
-import { putStakeholder } from "./stakeholder.put"
+import { putStakeholderById } from "./stakeholder.put"
 import { deleteStakeholderById } from "./stakeholder.delete"
+//validation
+import { validationExistByName } from "./validations/validationExistByName"
+import { validationNoExisById } from "./validations/validationNoExistById"
 
 const router = Router()
 
-router.use(RouterGetStakeholder)
-router.post("/", postStakeholder)
-router.put("/:id", putStakeholder)
-router.delete("/:id", deleteStakeholderById)
+router.get("/", getStakeholderAll)
+router.post("/", validationExistByName, postStakeholder)
+router.get("/:id", validationNoExisById, getStakeholderById)
+router.put("/:id", validationNoExisById, putStakeholderById)
+router.delete("/:id", validationNoExisById, deleteStakeholderById)
 
 export default router
